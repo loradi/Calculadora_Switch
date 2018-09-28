@@ -3,12 +3,16 @@
 //  Calculadora
 //
 //  Created by Diego  lopez on 9/25/18.
+//  Centennial College
+//  Ios Mobile Development
+//  Id: 300994519
 //  Copyright © 2018 Diego_Lopez. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
+    
     var Sum_flag: Int = 10
     var Minus_flag: Int = 20
     var Multi_flag: Int = 30
@@ -22,7 +26,7 @@ class ViewController: UIViewController {
     
     
     
-    @IBOutlet weak var resultArea: UILabel!
+    @IBOutlet weak var resultArea: UILabel! //this is the area for results
     
     var hasDot: Bool = false
     var isOperatorPressed: Bool = false
@@ -48,17 +52,19 @@ class ViewController: UIViewController {
         setToInit()
     }
     
+    //this is the fucntion for all the numbers
     @IBAction func numbers(_ sender: UIButton) {
         if(isOperatorPressed){
             num1 = Double(resultArea.text!)!
             resultArea.text = "0"
             isOperatorPressed = false
         }
-        
+        //flag for checked if the Equal button is pressed or not
         if(isEqlPressed){
             setToInit()
         }
         
+        //validation for dot
         if(resultArea.text == "0"){
             if(sender.tag == -1)
             {
@@ -82,7 +88,7 @@ class ViewController: UIViewController {
         }
         
     }
-    
+    //function for make all the logic with the button equal
     @IBAction func btnEqlClick(_ sender: UIButton) {
         num2 = Double(resultArea.text!)!
         ans = performOperation(num1: num1, num2: num2, OPR_TAG: pressedOperator)
@@ -99,6 +105,7 @@ class ViewController: UIViewController {
     }
     
     
+    // here is the logic for each button operators
     @IBAction func btn_operators(_ sender: UIButton){
         
         if(num1 != 0){
@@ -165,7 +172,7 @@ class ViewController: UIViewController {
         }
         return ans
     }
-    
+    //function if the numbers exceed the maximun lenght
     func doubleRound(result: Double) -> String {
         let finalAns = String(format: "%g", result)
         return finalAns
